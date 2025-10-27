@@ -17,9 +17,28 @@ next steps:
 
 I do not see any button to "submit" the request to OpenAI in the main UI.
 No change should happen to the rendered images until after I submit.
-For debugging display the full response from OpenAI on the UI after receiving it.
+
+Create a component for displaying OpenAI API call debug information.
+For debugging display in the UI both the full request that you send to OpenAI, and it's full response after receiving it.
+When you print the request, make sure to obscure any API keys.
+Make the debug component include the option to collapse, or view the debug info in full.
 
 </feedback2>
+
+<feedback3>
+
+There should be a way to go to another page view to see all of the pieces in a vertical list, where you can see the piece of media, and all the associated metadata.
+
+</feedback3>
+
+<feedback4>
+
+When switching to the All Portfolio list view, remove the chat box for requesting to filter the pieces, and the OpenAI debugging information. Both of these should only be displayed on the Gallery component.
+
+</feedback4>
+
+
+
 
 <design direction>
 
