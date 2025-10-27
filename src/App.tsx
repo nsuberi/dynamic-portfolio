@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import DynamicPortfolio from './components/DynamicPortfolio';
 import SpliceSoundBiteComponent from './components/SpliceSoundBite';
+import AppleNotes from './components/AppleNotes';
 import AudioPreviewModal from './components/AudioPreviewModal';
 import { samplePortfolioData } from './data/sampleData';
 import { SpliceSoundBite } from './types';
 import './App.css';
 
-type AppSection = 'portfolio' | 'splice';
+type AppSection = 'portfolio' | 'splice' | 'notes';
 
 function App() {
   const [currentSection, setCurrentSection] = useState<AppSection>('portfolio');
@@ -64,6 +65,12 @@ function App() {
           >
             Splice Sounds
           </button>
+          <button 
+            className={`nav-button ${currentSection === 'notes' ? 'active' : ''}`}
+            onClick={() => setCurrentSection('notes')}
+          >
+            Apple Notes
+          </button>
         </nav>
       </header>
       
@@ -76,6 +83,9 @@ function App() {
             onDownload={handleDownload}
             onPreview={handlePreview}
           />
+        )}
+        {currentSection === 'notes' && (
+          <AppleNotes />
         )}
       </main>
       

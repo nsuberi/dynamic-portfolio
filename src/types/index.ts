@@ -146,6 +146,47 @@ export interface SpliceFileMetadata {
   [filePath: string]: AudioFileAnalysis;
 }
 
+// Apple Notes interfaces
+export interface AppleNote {
+  id: string;
+  title: string;
+  content: string;
+  createdDate: Date;
+  modifiedDate: Date;
+  folder?: string;
+  tags?: string[];
+  attachments?: AppleNoteAttachment[];
+  isPinned?: boolean;
+  isLocked?: boolean;
+}
+
+export interface AppleNoteAttachment {
+  id: string;
+  name: string;
+  type: string;
+  size: number;
+  data?: string; // Base64 encoded data
+  url?: string; // URL if available
+}
+
+export interface AppleNotesImportOptions {
+  includeAttachments: boolean;
+  includeDeleted: boolean;
+  folderFilter?: string[];
+  dateRange?: {
+    start: Date;
+    end: Date;
+  };
+}
+
+export interface AppleNotesImportResult {
+  success: boolean;
+  importedCount: number;
+  skippedCount: number;
+  errors: string[];
+  notes: AppleNote[];
+}
+
 export interface AudioAnalysisRequest {
   filePath: string;
   fileName: string;

@@ -31,11 +31,5 @@ The audio preview card is not able to render the debug information
 it seems to be spilling out of the bottom and inaccessible.
 This could be due to the type of modal being used.
 
-<style>
-
-Ensure contrast between text colors and backgrounds.
-Use mobile responsive classes everywhere.
-
-</style>
 
 </splice-fetcher>
