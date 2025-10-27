@@ -1,0 +1,164 @@
+.gallery-container {
+  padding: 20px;
+  background: #fafafa;
+}
+
+.masonry-grid {
+  display: flex;
+  margin-left: -20px;
+  width: auto;
+}
+
+.masonry-grid-column {
+  padding-left: 20px;
+  background-clip: padding-box;
+}
+
+.gallery-item {
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item.small {
+  min-height: 200px;
+}
+
+.gallery-item.medium {
+  min-height: 300px;
+}
+
+.gallery-item.large {
+  min-height: 400px;
+}
+
+.gallery-item-content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.image-container,
+.video-container,
+.audio-container,
+.document-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+
+.audio-icon,
+.document-icon {
+  font-size: 64px;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: white;
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+  transform: translateY(0);
+}
+
+.piece-title {
+  font-family: 'Caviar Dreams', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.piece-year {
+  font-family: 'Palatino Linotype', serif;
+  font-size: 14px;
+  margin: 0 0 8px 0;
+  opacity: 0.9;
+}
+
+.play-hint {
+  font-family: 'Caviar Dreams', sans-serif;
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.document-preview {
+  font-family: 'Palatino Linotype', serif;
+  font-size: 12px;
+  margin: 8px 0 0 0;
+  opacity: 0.8;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gallery-container {
+    padding: 10px;
+  }
+  
+  .masonry-grid {
+    margin-left: -10px;
+  }
+  
+  .masonry-grid-column {
+    padding-left: 10px;
+  }
+  
+  .gallery-item {
+    margin-bottom: 10px;
+  }
+  
+  .overlay {
+    padding: 15px;
+  }
+  
+  .piece-title {
+    font-size: 16px;
+  }
+}

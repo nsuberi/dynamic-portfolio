@@ -1,0 +1,164 @@
+.dynamic-portfolio {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.portfolio-controls {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-label {
+  font-family: 'Caviar Dreams', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+  margin: 0;
+}
+
+.request-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Palatino Linotype', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical;
+  min-height: 80px;
+  transition: border-color 0.2s ease;
+}
+
+.request-input:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.request-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.submit-button {
+  align-self: flex-start;
+  background: #000;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-family: 'Caviar Dreams', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.submit-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error-message {
+  background: #ffe6e6;
+  border: 1px solid #ffcccc;
+  color: #cc0000;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: 'Palatino Linotype', serif;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.debug-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.debug-title {
+  font-family: 'Caviar Dreams', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  margin: 0 0 15px 0;
+}
+
+.debug-content {
+  background: white;
+  padding: 15px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #333;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  border: 1px solid #ddd;
+  margin: 0;
+}
+
+.gallery-section {
+  margin-top: 40px;
+}
+
+.gallery-title {
+  font-family: 'Caviar Dreams', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #000;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dynamic-portfolio {
+    padding: 10px;
+  }
+  
+  .portfolio-controls {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .input-label {
+    font-size: 16px;
+  }
+  
+  .request-input {
+    font-size: 14px;
+    padding: 12px;
+  }
+  
+  .submit-button {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+  
+  .gallery-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}
