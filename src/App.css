@@ -57,6 +57,44 @@ code {
   margin-top: 20px;
 }
 
+.audience-selector {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.audience-selector label {
+  font-family: 'Palatino Linotype', serif;
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+}
+
+.audience-dropdown {
+  padding: 8px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  background: white;
+  font-family: 'Palatino Linotype', serif;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  min-width: 250px;
+}
+
+.audience-dropdown:hover {
+  border-color: #007bff;
+}
+
+.audience-dropdown:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
 .nav-button {
   background: transparent;
   color: #666;

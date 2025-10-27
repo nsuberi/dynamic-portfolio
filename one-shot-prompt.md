@@ -39,6 +39,21 @@ When switching to the All Portfolio list view, remove the chat box for requestin
 
 
 
+<sample-data>
+
+This interface will be used to create portfolios for 4 different audiences:
+* a radio doing public broadcasting
+* film industry for a creative director fellowship
+* arts and literature magazine creative direction
+* communication strategist and branding creative director in a corporate setting
+
+Generate a set of 5 sample pieces of written content, and links to videos on the internet, and audio files on the internet that would be appropriate to emphasize each of these. They can be overlapping.
+
+Ensure that the preview photos and videos work for each of the pieces that are going to render in the portfolio.
+
+</sample-data>
+
+
 
 <design direction>
 

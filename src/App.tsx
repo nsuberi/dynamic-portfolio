@@ -4,15 +4,26 @@ import SpliceSoundBiteComponent from './components/SpliceSoundBite';
 import AppleNotes from './components/AppleNotes';
 import AudioPreviewModal from './components/AudioPreviewModal';
 import { samplePortfolioData } from './data/sampleData';
+import { allAudienceData, audienceDataMap } from './data/audienceSampleData';
 import { SpliceSoundBite } from './types';
 import './App.css';
 
 type AppSection = 'portfolio' | 'splice' | 'notes';
+type AudienceType = 'all' | 'radio-broadcasting' | 'film-industry' | 'arts-literature' | 'corporate-strategy';
 
 function App() {
   const [currentSection, setCurrentSection] = useState<AppSection>('portfolio');
+  const [selectedAudience, setSelectedAudience] = useState<AudienceType>('all');
   const [previewSoundBite, setPreviewSoundBite] = useState<SpliceSoundBite | null>(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+
+  // Get the appropriate portfolio data based on selected audience
+  const getPortfolioData = () => {
+    if (selectedAudience === 'all') {
+      return allAudienceData;
+    }
+    return audienceDataMap[selectedAudience] || samplePortfolioData;
+  };
 
   const handleDownload = (soundBite: SpliceSoundBite) => {
     try {
@@ -72,11 +83,29 @@ function App() {
             Apple Notes
           </button>
         </nav>
+
+        {currentSection === 'portfolio' && (
+          <div className="audience-selector">
+            <label htmlFor="audience-select">Select Portfolio Audience:</label>
+            <select 
+              id="audience-select"
+              value={selectedAudience} 
+              onChange={(e) => setSelectedAudience(e.target.value as AudienceType)}
+              className="audience-dropdown"
+            >
+              <option value="all">All Audiences (20 pieces)</option>
+              <option value="radio-broadcasting">Radio Broadcasting (5 pieces)</option>
+              <option value="film-industry">Film Industry (5 pieces)</option>
+              <option value="arts-literature">Arts & Literature (5 pieces)</option>
+              <option value="corporate-strategy">Corporate Strategy (5 pieces)</option>
+            </select>
+          </div>
+        )}
       </header>
       
       <main className="app-main">
         {currentSection === 'portfolio' && (
-          <DynamicPortfolio allPieces={samplePortfolioData} />
+          <DynamicPortfolio allPieces={getPortfolioData()} />
         )}
         {currentSection === 'splice' && (
           <SpliceSoundBiteComponent 
