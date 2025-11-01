@@ -1,43 +1,118 @@
 .gallery-container {
-  padding: 20px;
+  /* Generous margins: 60% art, 40% white space principle */
+  /* Top/bottom margins larger for eye-level positioning */
+  padding: 60px 48px; /* ~2.4 inches horizontal, ~2.4 inches vertical */
   background: #fafafa;
+  max-width: 1600px;
+  margin: 0 auto;
+  /* Allow natural height - don't force full viewport */
+  width: 100%;
 }
 
-.masonry-grid {
-  display: flex;
-  margin-left: -20px;
-  width: auto;
+.art-wall-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* Consistent spacing: 2-3 inches (48-72px) between columns */
+  /* Using 56px (~2.2 inches) for rhythmic, consistent spacing */
+  gap: 56px;
+  align-items: start;
+  /* Create alignment points - columns align at certain heights */
+  grid-auto-rows: min-content;
+  /* Ensure gallery doesn't fill 100% - maintain white space */
+  width: 100%;
+  max-width: 1400px;
+  /* Allow items to span multiple columns */
+  grid-auto-flow: row dense;
 }
 
-.masonry-grid-column {
-  padding-left: 20px;
-  background-clip: padding-box;
+/* Column-spanning items (horizontal images) */
+/* Art-wall principle: Horizontal pieces span columns for visual interest */
+.gallery-item.span-columns {
+  /* Spans 2 columns automatically via grid-column: span 2 */
+  aspect-ratio: 16 / 9; /* Horizontal aspect ratio */
+  min-height: 280px; /* Shorter height for horizontal pieces */
 }
 
 .gallery-item {
-  margin-bottom: 20px;
+  margin-bottom: 0;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0.3s ease;
+  border-radius: 4px;
   overflow: hidden;
   background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow - allows white space to breathe */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  width: 100%;
+  /* Each piece has buffer of white space around it */
+  flex-shrink: 0;
 }
 
 .gallery-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  z-index: 10;
 }
 
+/* Focal piece - large central image */
+/* Art-wall principle: Clear hierarchy with focal point */
+/* Largest/most striking piece at center, eye level (~57-60 inches) */
+/* This piece draws attention first, then eye flows to supporting pieces */
+.gallery-item.focal-piece {
+  min-height: 680px;
+  height: auto; /* Allow aspect ratio to work */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: scale(1.06); /* Slightly larger to emphasize centrality */
+  border: 2px solid rgba(255, 255, 255, 0.95); /* Subtle border for definition */
+  z-index: 3; /* Ensure it appears above other items */
+}
+
+.gallery-item.focal-piece:hover {
+  transform: translateY(-10px) scale(1.10); /* More dramatic hover effect */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  z-index: 15; /* Even higher on hover */
+}
+
+/* Standardized heights create alignment points across columns */
+/* Art-wall principle: Pieces align horizontally at certain heights */
+/* Consistent sizing enables top-edge alignment and visual rhythm */
 .gallery-item.small {
   min-height: 200px;
+  aspect-ratio: 3 / 4;
+  /* Smaller pieces balance visual weight of larger pieces */
 }
 
 .gallery-item.medium {
-  min-height: 300px;
+  min-height: 320px;
+  aspect-ratio: 4 / 5;
+  /* Medium pieces provide supporting hierarchy */
 }
 
 .gallery-item.large {
+  min-height: 420px;
+  aspect-ratio: 3 / 4;
+  /* Large pieces create visual anchors - balanced by smaller pieces */
+}
+
+/* Horizontal spanning items override aspect ratio */
+.gallery-item.span-columns.small {
+  aspect-ratio: 16 / 9;
+  min-height: 180px;
+}
+
+.gallery-item.span-columns.medium {
+  aspect-ratio: 16 / 9;
+  min-height: 240px;
+}
+
+.gallery-item.span-columns.large {
+  aspect-ratio: 16 / 9;
+  min-height: 300px;
+}
+
+/* Focal piece can also span if horizontal */
+.gallery-item.focal-piece.span-columns {
+  aspect-ratio: 16 / 9;
   min-height: 400px;
 }
 
@@ -137,21 +212,74 @@
 }
 
 /* Responsive adjustments */
+@media (max-width: 1200px) {
+  .gallery-container {
+    padding: 48px 36px; /* Maintain generous margins */
+  }
+  
+  .art-wall-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px; /* Maintain consistent spacing */
+  }
+  
+  /* Limit spanning to 2 columns max on 3-column layout */
+  .gallery-item.span-columns {
+    grid-column: span 2;
+  }
+  
+  .gallery-item.focal-piece {
+    min-height: 600px;
+    transform: scale(1.04);
+  }
+  
+  .gallery-item.focal-piece.span-columns {
+    min-height: 350px;
+  }
+  
+  .gallery-item.focal-piece:hover {
+    transform: translateY(-8px) scale(1.08);
+  }
+}
+
 @media (max-width: 768px) {
   .gallery-container {
-    padding: 10px;
+    padding: 36px 24px; /* Maintain margins, slightly reduced */
   }
   
-  .masonry-grid {
-    margin-left: -10px;
+  .art-wall-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px; /* Maintain consistent spacing */
   }
   
-  .masonry-grid-column {
-    padding-left: 10px;
+  /* Horizontal items can span full width on 2-column layout */
+  .gallery-item.span-columns {
+    grid-column: span 2;
   }
   
-  .gallery-item {
-    margin-bottom: 10px;
+  .gallery-item.focal-piece {
+    min-height: 500px;
+    transform: scale(1.02); /* Less scale on mobile but still prominent */
+    border-width: 1px;
+  }
+  
+  .gallery-item.focal-piece.span-columns {
+    min-height: 300px;
+  }
+  
+  .gallery-item.focal-piece:hover {
+    transform: translateY(-8px) scale(1.06);
+  }
+  
+  .gallery-item.small {
+    min-height: 180px;
+  }
+  
+  .gallery-item.medium {
+    min-height: 280px;
+  }
+  
+  .gallery-item.large {
+    min-height: 360px;
   }
   
   .overlay {
@@ -160,5 +288,35 @@
   
   .piece-title {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 500px) {
+  .gallery-container {
+    padding: 32px 20px; /* Maintain margins */
+  }
+  
+  .art-wall-grid {
+    grid-template-columns: 1fr;
+    gap: 32px; /* Maintain spacing */
+  }
+  
+  /* Single column: no spanning needed */
+  .gallery-item.span-columns {
+    grid-column: span 1;
+  }
+  
+  .gallery-item.focal-piece {
+    min-height: 450px;
+    transform: scale(1); /* No scale on single column */
+    border-width: 1px;
+  }
+  
+  .gallery-item.focal-piece.span-columns {
+    min-height: 280px;
+  }
+  
+  .gallery-item.focal-piece:hover {
+    transform: translateY(-6px) scale(1.02);
   }
 }
